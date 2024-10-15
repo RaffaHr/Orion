@@ -13,7 +13,6 @@ RUN npm install
 # Copie o restante do código da aplicação
 COPY src/AI /app/src/AI
 COPY src/components /app/src/components
-COPY src/lib /app/src/lib
 
 # Instale 'concurrently' globalmente para rodar frontend e backend
 RUN npm install -g concurrently

@@ -49,7 +49,7 @@
         },
         "comprovante de entrega": {
           "prompt": "Como pego comprovante de entrega na LOGGI?",
-          "completions": "1. **Acesse o portal de rastreamento da LOGGI.**  \n   - Certifique-se de que você está na página correta.\n\n2. **Insira o código de rastreamento do cliente.**  \n   - No campo designado, digite o código de rastreamento do cliente e abra o rastreamento correspondente.\n\n3. **Abra os detalhes do rastreamento.**  \n   - Clique nele para abrir os detalhes do rastreamento. Isso mostrará o status atual da entrega.\n\n4. **Clique em 'Ver detalhes' para acessar o comprovante de entrega.**  \n   - Caso o comprovante não esteja disponível, será necessário abrir um ticket com a LOGGI para solicitá-lo.\n\n5. **Ajuda adicional:**  \n   - Digite: *\"Como abrir um ticket na LOGGI\"* que eu te orientarei com o passo a passo."
+          "completions": "1. **Acesse o portal de rastreamento da LOGGI.**  \n\n   - Certifique-se de que você está na página correta.\n\n 2. **Insira o código de rastreamento do cliente.**  \n\n   - No campo designado, digite o código de rastreamento do cliente e abra o rastreamento correspondente.\n\n 3. **Abra os detalhes do rastreamento.**  \n\n  - Clique nele para abrir os detalhes do rastreamento. Isso mostrará o status atual da entrega.\n\n 4. **Clique em 'Ver detalhes' para acessar o comprovante de entrega.**  \n\n  - Caso o comprovante não esteja disponível, será necessário abrir um ticket com a LOGGI para solicitá-lo.\n\n 5. **Ajuda adicional:**  \n\n   - Digite: *\"Como abrir um ticket na LOGGI\"* que eu te orientarei com o passo a passo."
         },
         "abrir um ticket na LOGGI": {
           "prompt": "Como abrir um ticket na LOGGI",

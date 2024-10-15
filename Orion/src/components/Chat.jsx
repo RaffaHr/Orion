@@ -2,9 +2,20 @@
 import { useState, useEffect, useRef } from "react";
 import { SendIcon, User, Bot } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const TypingAnimation = ({ text, speed = 10, onComplete }) => {
   const [displayedText, setDisplayedText] = useState("");
+
+    // Customização do ReactMarkdown
+    const renderers = {
+      a: ({ node, ...props }) => (
+        <a {...props} className="text-blue-500 hover:underline" />
+      ),
+      img: ({ node, ...props }) => (
+        <img {...props} className="rounded shadow" />
+      ),
+    };
 
   useEffect(() => {
     let currentIndex = 0; // Mover o índice dentro do useEffect
@@ -21,7 +32,13 @@ const TypingAnimation = ({ text, speed = 10, onComplete }) => {
     return () => clearInterval(timer); // Limpeza do intervalo ao desmontar
   }, [text, speed, onComplete]);
 
-  return <ReactMarkdown breaks={true}>{displayedText}</ReactMarkdown>; // Renderizando o texto formatado
+  return <ReactMarkdown 
+  children={displayedText} // Altere 'content' para 'message.content'
+  components={renderers} // Adicionando renderers personalizados
+  remarkPlugins={[remarkGfm]} // Adicionando plugin GFM
+  skipHtml={true} // Desativando HTML
+  breaks={true}
+  >{displayedText}</ReactMarkdown>; // Renderizando o texto formatado
 };
 
 const Chat = ({
@@ -112,6 +129,16 @@ const Chat = ({
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [conversations, currentConversationIndex, isTyping]);
 
+  // Customização do ReactMarkdown
+  const renderers = {
+    a: ({ node, ...props }) => (
+      <a {...props} className="text-blue-500 hover:underline" />
+    ),
+    img: ({ node, ...props }) => (
+      <img {...props} className="rounded shadow" />
+    ),
+  };
+
   return (
     <main
       className={`flex-1 flex flex-col overflow-hidden
@@ -122,7 +149,7 @@ const Chat = ({
       }`}
     >
       <div className="flex-grow overflow-y-auto">
-        <div className="pl-40 pr-40 pb-2  mx-auto p-4 space-y-4">
+        <div className="pl-40 pr-40 pb-2 mx-auto p-4 space-y-4">
           {currentConversationIndex !== null &&
             conversations[currentConversationIndex].messages.map(
               (message, index) => (
@@ -168,9 +195,13 @@ const Chat = ({
                           onComplete={handleTypingComplete}
                         />
                       ) : (
-                        <ReactMarkdown breaks={true}>
-                          {message.content}
-                        </ReactMarkdown>
+                        <ReactMarkdown
+                          children={message.content} // Altere 'content' para 'message.content'
+                          components={renderers} // Adicionando renderers personalizados
+                          remarkPlugins={[remarkGfm]} // Adicionando plugin GFM
+                          skipHtml={true} // Desativando HTML
+                          breaks={true}
+                        />
                       )}
                     </div>
                   </div>

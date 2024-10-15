@@ -4,9 +4,6 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "start-orion": "npm run dev",
-    "start-backend": "cd src && cd AI && node ai.js --watch",
-    "start-all": "concurrently \"npm run start-orion\" \"npm run start-backend\"",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",

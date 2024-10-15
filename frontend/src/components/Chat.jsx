@@ -84,7 +84,7 @@ const Chat = ({
     }
 
     try {
-      const response = await fetch("http://orion-ia.vercel.app/api/chat", {
+      const response = await fetch("https://orion-ia.vercel.app/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: inputMessage }),

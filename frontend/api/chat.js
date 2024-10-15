@@ -13,7 +13,7 @@ app.use(express.json());
 
 // Configurar o CORS para permitir o frontend em localhost
 app.use(cors({
-    origin: 'orion-ia.vercel.app',
+    origin: 'https://orion-ia.vercel.app',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'],
 }));

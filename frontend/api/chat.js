@@ -156,8 +156,5 @@ async function reformulateTextWithCohere(text) {
   }
 }
 
-// Inicializar o servidor na porta 8000
-const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
-});
+// Exportar o app para o Vercel
+export default app;

@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm --prefix frontend run build",
+    "start-backend": "node backend/ai.js --watch",
+    "start-frontend": "npm --prefix frontend run start",
+    "start": "npm run start-backend & npm run start-frontend",
     "lint": "eslint .",
     "preview": "vite preview"
   },

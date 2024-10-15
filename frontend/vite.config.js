@@ -1,19 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// Importando o caminho do módulo 'path'
-import path from 'path';
-
-// Definindo a configuração do Vite
+// https://vitejs.dev/config/
 export default defineConfig({
-  // Especificando o diretório de entrada
-  root: path.resolve(__dirname, 'frontend'), // Caminho para a pasta 'frontend'
   plugins: [react()],
-  // Configuração para o diretório de saída
   build: {
-    outDir: path.resolve(__dirname, 'frontend', 'dist'), // Caminho para a pasta 'dist' dentro de 'frontend'
+    outDir: 'dist', // Certifique-se de que o diretório de saída esteja correto
   },
   server: {
-    port: 3000, // Porta do servidor de desenvolvimento
+    port: 3000, // Você pode escolher a porta que preferir
   },
 });

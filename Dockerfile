@@ -1,19 +1,31 @@
-# Backend
-FROM python:3.9-slim AS backend
-WORKDIR /app
-COPY ./backend /app
-RUN pip install --no-cache-dir -r requirements.txt
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+# Use uma imagem base para Node.js
+FROM node:18-alpine
 
-# Frontend
-FROM node:14 AS frontend
+# Defina o diretório de trabalho
 WORKDIR /app
-COPY ./frontend /app
+
+# Copie os arquivos de dependência
+COPY package*.json ./
+
+# Instale as dependências
 RUN npm install
-RUN npm run build
 
-# Final Stage - serve the React app
-FROM nginx:alpine
-COPY --from=frontend /app/build /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Copie o restante do código da aplicação
+COPY src/AI /app/src/AI
+COPY src/components /app/src/components
+COPY src/lib /app/src/lib
+COPY public /app/public
+COPY index.html /app/index.html
+
+
+# Instale 'concurrently' globalmente para rodar frontend e backend
+RUN npm install -g concurrently
+
+# Defina o diretório de trabalho para o frontend
+WORKDIR /app
+
+# Exponha as portas necessárias
+EXPOSE 3000 5000
+
+# Comando para iniciar ambos os serviços
+CMD ["npm", "run", "start-all"]

@@ -3,15 +3,15 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "npm --prefix frontend run build",
-    "start-backend": "node backend/ai.js --watch",
-    "start-frontend": "npm --prefix frontend run start",
-    "start": "npm run start-backend & npm run start-frontend",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
+"scripts": {
+  "dev": "vite --prefix frontend",
+  "build": "vite build --prefix frontend",
+  "start-backend": "node backend/ai.js --watch",
+  "start-frontend": "vite preview --prefix frontend",
+  "start": "concurrently \"npm run start-backend\" \"npm run start-frontend\"",
+  "lint": "eslint ."
+}
+,
   "dependencies": {
     "axios": "^1.7.7",
     "class-variance-authority": "^0.7.0",

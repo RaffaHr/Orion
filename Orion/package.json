@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start-orion": "npm run dev",
-    "start-backend": "cd .. && cd backend && uvicorn App:app --reload",
+    "start-backend": "cd src && cd backend && uvicorn App:app --reload",
     "start-all": "concurrently \"npm run start-orion\" \"npm run start-backend\"",
     "dev": "vite",
     "build": "vite build",

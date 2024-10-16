@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import Login from './routes/Login.jsx';
 import ErrorPage from './routes/Error.jsx';
 import App from './App/OrionAI.jsx';
-import './app.css';
+import './App.css';
 import { ThemeProvider } from './App/ThemeContext.jsx'; // Importa o ThemeProvider
 
 // Componente que faz o redirecionamento

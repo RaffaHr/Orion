@@ -6,14 +6,14 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'), // Altere 'src' se sua estrutura de pastas for diferente
+      '@': resolve(__dirname, 'src'), 
     },
   },
   build: {
-    outDir: 'output', // Altere para 'output' para corresponder ao que o Vercel espera
-    emptyOutDir: true, // Garante que a pasta de saída seja limpa antes da build
+    outDir: 'output', // A pasta onde o Vercel espera os arquivos de build do frontend
+    emptyOutDir: true, 
   },
   server: {
-    port: 3000, // ou qualquer porta que você prefira
+    port: 3000, // Porta preferida
   }
 });

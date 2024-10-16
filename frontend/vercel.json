@@ -13,7 +13,7 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "distDir": "dist"  // Diretório onde os arquivos estáticos são gerados pelo Vite
       }
     }
   ],
@@ -27,8 +27,8 @@
       "dest": "/api/chat.js"
     },
     {
-      "src": "/(.*)",
-      "dest": "/vercel/output/index.html"
+      "src": "/(.*)",   // Redirecionar todas as rotas para o index.html para o React Router DOM gerenciar
+      "dest": "/dist/index.html"
     }
   ]
 }

@@ -45,7 +45,7 @@ async function checkResponseWithCohere(question, completion) {
 
 // Função para carregar dados do arquivo JSON
 function loadJsonData() {
-    const filePath = path.join(process.cwd(), 'db_process.json');
+    const filePath = path.join(__dirname, 'db_process.json');  // Caminho relativo usando __dirname
     try {
         const data = fs.readFileSync(filePath, 'utf8');
         return JSON.parse(data);

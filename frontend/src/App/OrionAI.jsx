@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 // Importa os componentes Sidebar e Chat
 import Sidebar from './Sidebar';
 import Chat from './Chat';
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate para redirecionamento
+import axios from 'axios'; // Importa axios para realizar chamadas à API
 
 // Componente principal que gerencia o estado e a estrutura da aplicação
 const Main = () => {
@@ -17,14 +19,39 @@ const Main = () => {
   const [conversations, setConversations] = useState([]);
   // Estado para armazenar o índice da conversa atualmente selecionada
   const [currentConversationIndex, setCurrentConversationIndex] = useState(null);
+  const navigate = useNavigate(); // Hook para navegação
 
   // Hook useEffect que é executado quando o componente é montado
-  // Verifica se não há conversas e cria uma nova conversa ao iniciar
   useEffect(() => {
+    // Verifica o token ao montar o componente
+    const checkToken = async () => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        try {
+          // Faz uma chamada à API para validar o token
+          await axios.get('/api/login', {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+        } catch (error) {
+          // Se a validação falhar, remove o token e navega para /login
+          localStorage.removeItem('token');
+          navigate('/login');
+        }
+      } else {
+        // Se não houver token, navega para /login
+        navigate('/login');
+      }
+    };
+
+    checkToken(); // Chama a função para verificar o token
+
+    // Cria nova conversa se não houver conversas
     if (conversations.length === 0) {
       createNewConversation();
     }
-  }, []); // O array vazio indica que este efeito só roda na primeira renderização
+  }, [navigate, conversations.length]); // O efeito roda na montagem e quando o número de conversas muda
 
   // Hook useEffect que é executado sempre que o tema é alterado
   useEffect(() => {

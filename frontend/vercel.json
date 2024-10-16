@@ -6,6 +6,14 @@
       "use": "@vercel/node"
     },
     {
+      "src": "api/server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/ai.js",
+      "use": "@vercel/node"
+    },
+    {
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
@@ -14,6 +22,14 @@
     }
   ],
   "routes": [
+    {
+      "src": "/api/login",
+      "dest": "/api/server.js"
+    },
+    {
+      "src": "/api/ai",
+      "dest": "/api/ai.js"
+    },
     {
       "src": "/api/(.*)",
       "dest": "/api/chat.js"

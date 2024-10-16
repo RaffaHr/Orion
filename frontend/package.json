@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "build": "cd api && npm uninstall @prisma/cli && npm install prisma --save-dev && npm install @prisma/cli && npm run prisma generate && prisma generate && cd .. && vite build",
+    "build": "cd api && npm uninstall @prisma/cli && npm install prisma --save-dev && npm install @prisma/client && npm run prisma generate && prisma generate && cd .. && vite build",
     "start": "vite",
     "dev": "vite",
     "lint": "eslint .",

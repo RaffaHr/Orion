@@ -13,7 +13,7 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "vercel/output" 
+        "distDir": "output" 
       }
     }
   ],
@@ -28,7 +28,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/vercel/output/index.html"
+      "dest": "/index.html"
     }
   ]
 }

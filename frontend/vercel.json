@@ -10,10 +10,14 @@
       "use": "@vercel/node"
     },
     {
+      "src": "api/ai.js",
+      "use": "@vercel/node"
+    },
+    {
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "output" 
+        "distDir": "dist"
       }
     }
   ],
@@ -23,12 +27,16 @@
       "dest": "/api/server.js"
     },
     {
+      "src": "/api/ai",
+      "dest": "/api/ai.js"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "/api/chat.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/dist/index.html"
     }
   ]
 }

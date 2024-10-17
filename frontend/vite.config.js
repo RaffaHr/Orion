@@ -5,15 +5,16 @@ import { resolve } from 'path';
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: {
-      '@': resolve(__dirname, 'src'), 
+    resolve: {
+      alias: {
+        '@': resolve(__dirname, 'src'), // Altera 'src' se sua estrutura de pastas for diferente
+      },
     },
   },
   build: {
-    outDir: 'output', // A pasta onde o Vercel espera os arquivos de build do frontend
-    emptyOutDir: true, 
+    outDir: 'dist'
   },
   server: {
-    port: 3000, // Porta preferida
+    port: 3000 // ou qualquer porta que você prefira
   }
 });
